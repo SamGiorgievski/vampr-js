@@ -10,16 +10,15 @@ describe("Vampire", function() {
     rootVampire = new Vampire("root");
   });
 
-  describe("closestCommonAncestor", function() {
-
+  describe("totalDescendents", function() {
     let offspring1, offspring2, offspring3, offspring4, offspring5, offspring6, offspring7, offspring8;
     beforeEach(() => {
       offspring1 = new Vampire("a");
-      offspring2 = new Vampire("b"); 1
-      offspring3 = new Vampire("c"); 2
+      offspring2 = new Vampire("b");
+      offspring3 = new Vampire("c");
       offspring4 = new Vampire("d");
-      offspring5 = new Vampire("e"); 1
-      offspring6 = new Vampire("f"); 1
+      offspring5 = new Vampire("e");
+      offspring6 = new Vampire("f");
       offspring7 = new Vampire("g");
       offspring8 = new Vampire("h");
 
@@ -33,13 +32,11 @@ describe("Vampire", function() {
       offspring2.addOffspring(offspring8);
     });
 
-    it("root vampire descendents should be 8", () => {
-      expect(rootVampire.totalDescendents()).to.equal(8);
-    })
-
-    it("offpsring3 descendents should be 4", () => {
-      expect(offspring3.totalDescendents()).to.equal(4);
-    })
-
+    it("should give the total descendents underneath a specific vampire", () => {
+      expect(rootVampire.totalDescendents).to.equal(8);
+      expect(offspring1.totalDescendents).to.equal(0);
+      expect(offspring2.totalDescendents).to.equal(1);
+      expect(offspring3.totalDescendents).to.equal(4);
+    });
   });
 });
